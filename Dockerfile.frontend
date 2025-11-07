@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy source files
+COPY public ./public
+
+# Expose Parcel dev server port
+EXPOSE 1234
+
+# Start Parcel dev server
+CMD ["npm", "run", "dev"]

@@ -1,0 +1,27 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: "0.0.0.0:4318"
+        cors:
+          allowed_origins:
+            - "http://localhost:*"
+            - "http://localhost:1234"
+          allowed_headers:
+            - "*"
+
+exporters:
+  otlp/elastic:
+    endpoint: ${ELASTIC_ENDPOINT}
+    headers:
+      Authorization: "${ELASTIC_TOKEN}"
+    tls:
+      insecure: false
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlp/elastic, debug] 

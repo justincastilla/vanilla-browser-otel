@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OpenTelemetry Browser Demo</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>OpenTelemetry Browser Demo</h1>
+      <p class="subtitle">Real-time observability with Elastic APM</p>
+    </header>
+
+    <div class="main-grid">
+      <div class="interaction-column">
+        <div class="card">
+          <h2>Manual Span Creation</h2>
+          <p class="description">Test manual instrumentation by creating a custom span</p>
+          <button id="button1" class="btn btn-primary">Create Manual Span</button>
+        </div>
+
+        <div class="card">
+          <h2>HTTP Request Tracing</h2>
+          <p class="description">Simulate cascading HTTP requests to JSONPlaceholder API</p>
+          <button id="button2" class="btn btn-secondary">Run API Simulation</button>
+        </div>
+
+        <div class="card">
+          <h2>User Interaction Tracking</h2>
+          <p class="description">Adjust the slider to generate user interaction spans</p>
+          <div class="slider-container">
+            <input type="range" id="slider" min="1" max="10" value="5" />
+            <div class="slider-labels">
+              <span>1</span>
+              <span>10</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Weather API Demo</h2>
+          <p class="description">Fetch weather data with hybrid instrumentation</p>
+          <div class="input-group">
+            <input type="text" id="weatherInput" placeholder="Enter city name (e.g., Seattle)" />
+            <button id="getWeather" class="btn btn-primary">Get Weather</button>
+          </div>
+          <div id="weather"></div>
+        </div>
+      </div>
+
+      <div class="log-column">
+        <div class="card log-container">
+          <div class="log-header">
+            <h2>Telemetry Log</h2>
+            <button id="clearLogs" class="btn-clear">Clear</button>
+          </div>
+          <p class="description">Real-time trace and span activity</p>
+          <div id="logOutput"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
